@@ -16,9 +16,8 @@ class MockitoTest {
     @Mock Personne personGlobal;
 
     @BeforeEach
-    void init(@Mock Personne personne) {
+    void init() {
         when(personGlobal.getFirstName()).thenReturn("Legolas");
-        when(personne.getFirstName()).thenReturn("Gimli");
     }
 
     @Test
@@ -28,6 +27,8 @@ class MockitoTest {
 
     @Test
     void simpleTestWithInjectedMock(@Mock Personne personne) {
+        when(personne.getFirstName()).thenReturn("Gimli");
+
         assertEquals("Gimli", personne.getFirstName());
     }
 }
